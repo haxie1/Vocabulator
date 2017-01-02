@@ -60,6 +60,7 @@ class VocabDeckPickerCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = self.deckPickerViewModel?.title ?? ""
     }
 

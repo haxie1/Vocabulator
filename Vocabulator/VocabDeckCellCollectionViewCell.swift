@@ -18,7 +18,8 @@ class VocabDeckCollectionViewCell: UICollectionViewCell {
         didSet {
             if let deck = self.viewModel {
                 self.titleLabel.text = deck.title
-                self.imageView.image = UIImage(named: deck.imageName) // ?? or default image?
+                let image = UIImage(named: deck.imageName) ?? #imageLiteral(resourceName: "WordDeckDefault")
+                self.imageView.image = image.withRenderingMode(.alwaysTemplate)
             }
         }
     }

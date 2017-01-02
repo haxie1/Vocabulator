@@ -32,7 +32,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="75" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zc3-Gb-7EI">
+                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WordDeckDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Zc3-Gb-7EI">
                                             <rect key="frame" x="0.0" y="-3" width="75" height="103"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yo5-Qs-csd">
@@ -110,4 +110,7 @@
             <point key="canvasLocation" x="-111" y="74"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="WordDeckDefault" width="37" height="49"/>
+    </resources>
 </document>
