@@ -8,8 +8,16 @@
 
 import UIKit
 
+protocol DeckCollection {
+    var title: String { get }
+    var decks: [WordDeck] { get }
+    var childCount: Int { get }
+}
+
 class VocabDeckPickerViewModel {
     let title: String
+    private (set) var sections: [DeckCollection] = []
+    
     init(withTitle title: String) {
         self.title = title
     }
@@ -17,11 +25,25 @@ class VocabDeckPickerViewModel {
     convenience init() {
         self.init(withTitle: "Vocabulator")
     }
+    
+    func childCount(forSection section: Int) -> Int {
+        return self.sections[section].childCount
+    }
+    
+    func wordDeck(forIndexPath indexPath: IndexPath) -> WordDeck {
+        return self.sections[indexPath.section].decks[indexPath.row]
+    }
 }
 
 class VocabDeckCollectionHeaderView: UICollectionReusableView {
     static var reuseID: String {
         return String(describing: self)
+    }
+    
+    var viewModel: DeckCollection? {
+        didSet {
+            self.titleLabel.text = viewModel?.title ?? ""
+        }
     }
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -49,24 +71,28 @@ class VocabDeckPickerCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return self.deckPickerViewModel?.sections.count ?? 0
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.deckPickerViewModel?.childCount(forSection: section) ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let wordDeck = self.deckPickerViewModel?.wordDeck(forIndexPath: indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VocabDeckCollectionViewCell.reuseID, for: indexPath) as! VocabDeckCollectionViewCell
-        cell.titleLabel.text = "Title: \(indexPath.row + 1)"
+        cell.viewModel = wordDeck
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionElementKindSectionHeader:
-            return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: VocabDeckCollectionHeaderView.reuseID, for: indexPath)
+            let deckCollection = self.deckPickerViewModel?.sections[indexPath.section]
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: VocabDeckCollectionHeaderView.reuseID, for: indexPath) as! VocabDeckCollectionHeaderView
+            header.viewModel = deckCollection
+            return header
         default:
             assert(false)
         }

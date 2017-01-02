@@ -8,22 +8,18 @@
 
 import UIKit
 
+protocol WordDeck {
+    var title: String { get }
+    var imageName: String { get }
+}
+
 class VocabDeckCollectionViewCell: UICollectionViewCell {
-    @IBInspectable var showsBorder: Bool {
-        set (newValue) {
-            if newValue {
-                self.layer.borderColor = UIColor.gray.cgColor
-                self.layer.borderWidth = 0.5
-                self.layer.cornerRadius = 4.0
-                self.clipsToBounds = true
-            } else {
-                self.layer.borderColor = UIColor.clear.cgColor
-                self.layer.borderWidth = 0.0
+    var viewModel: WordDeck? {
+        didSet {
+            if let deck = self.viewModel {
+                self.titleLabel.text = deck.title
+                self.imageView.image = UIImage(named: deck.imageName) // ?? or default image?
             }
-        }
-        
-        get {
-            return self.layer.borderWidth > 0.0 && self.layer.borderColor != UIColor.clear.cgColor
         }
     }
     
@@ -47,6 +43,26 @@ class VocabDeckCollectionViewCell: UICollectionViewCell {
         }
         get {
             return super.isHighlighted
+        }
+    }
+}
+
+extension VocabDeckCollectionViewCell {
+    @IBInspectable var showsBorder: Bool {
+        set (newValue) {
+            if newValue {
+                self.layer.borderColor = UIColor.gray.cgColor
+                self.layer.borderWidth = 0.5
+                self.layer.cornerRadius = 4.0
+                self.clipsToBounds = true
+            } else {
+                self.layer.borderColor = UIColor.clear.cgColor
+                self.layer.borderWidth = 0.0
+            }
+        }
+        
+        get {
+            return self.layer.borderWidth > 0.0 && self.layer.borderColor != UIColor.clear.cgColor
         }
     }
 }

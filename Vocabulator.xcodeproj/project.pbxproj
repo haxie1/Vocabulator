@@ -80,9 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				427034381E1991A800986DCE /* AppDelegate.swift */,
-				427034581E19944D00986DCE /* VocabDeckPicker.storyboard */,
-				4270345A1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift */,
-				4270345C1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift */,
+				4270345E1E1AD1DF00986DCE /* Features */,
 				4270343F1E1991A800986DCE /* Assets.xcassets */,
 				427034411E1991A800986DCE /* LaunchScreen.storyboard */,
 				427034441E1991A800986DCE /* Info.plist */,
@@ -97,6 +95,16 @@
 				4270344F1E1991A800986DCE /* Info.plist */,
 			);
 			path = VocabulatorTests;
+			sourceTree = "<group>";
+		};
+		4270345E1E1AD1DF00986DCE /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				4270345A1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift */,
+				4270345C1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift */,
+				427034581E19944D00986DCE /* VocabDeckPicker.storyboard */,
+			);
+			name = Features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
