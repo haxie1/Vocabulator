@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		427034391E1991A800986DCE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427034381E1991A800986DCE /* AppDelegate.swift */; };
-		4270343B1E1991A800986DCE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270343A1E1991A800986DCE /* ViewController.swift */; };
-		4270343E1E1991A800986DCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4270343C1E1991A800986DCE /* Main.storyboard */; };
 		427034401E1991A800986DCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4270343F1E1991A800986DCE /* Assets.xcassets */; };
 		427034431E1991A800986DCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427034411E1991A800986DCE /* LaunchScreen.storyboard */; };
 		4270344E1E1991A800986DCE /* VocabulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270344D1E1991A800986DCE /* VocabulatorTests.swift */; };
+		427034591E19944D00986DCE /* VocabDeckPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427034581E19944D00986DCE /* VocabDeckPicker.storyboard */; };
+		4270345B1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270345A1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift */; };
+		4270345D1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270345C1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,14 +29,15 @@
 /* Begin PBXFileReference section */
 		427034351E1991A800986DCE /* Vocabulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vocabulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		427034381E1991A800986DCE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4270343A1E1991A800986DCE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4270343D1E1991A800986DCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4270343F1E1991A800986DCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		427034421E1991A800986DCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		427034441E1991A800986DCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		427034491E1991A800986DCE /* VocabulatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocabulatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4270344D1E1991A800986DCE /* VocabulatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabulatorTests.swift; sourceTree = "<group>"; };
 		4270344F1E1991A800986DCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		427034581E19944D00986DCE /* VocabDeckPicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VocabDeckPicker.storyboard; sourceTree = "<group>"; };
+		4270345A1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabDeckPickerCollectionViewController.swift; sourceTree = "<group>"; };
+		4270345C1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabDeckCellCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +80,9 @@
 			isa = PBXGroup;
 			children = (
 				427034381E1991A800986DCE /* AppDelegate.swift */,
-				4270343A1E1991A800986DCE /* ViewController.swift */,
-				4270343C1E1991A800986DCE /* Main.storyboard */,
+				427034581E19944D00986DCE /* VocabDeckPicker.storyboard */,
+				4270345A1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift */,
+				4270345C1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift */,
 				4270343F1E1991A800986DCE /* Assets.xcassets */,
 				427034411E1991A800986DCE /* LaunchScreen.storyboard */,
 				427034441E1991A800986DCE /* Info.plist */,
@@ -181,9 +184,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427034591E19944D00986DCE /* VocabDeckPicker.storyboard in Resources */,
 				427034431E1991A800986DCE /* LaunchScreen.storyboard in Resources */,
 				427034401E1991A800986DCE /* Assets.xcassets in Resources */,
-				4270343E1E1991A800986DCE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,8 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4270343B1E1991A800986DCE /* ViewController.swift in Sources */,
 				427034391E1991A800986DCE /* AppDelegate.swift in Sources */,
+				4270345D1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift in Sources */,
+				4270345B1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,14 +229,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4270343C1E1991A800986DCE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4270343D1E1991A800986DCE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		427034411E1991A800986DCE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
