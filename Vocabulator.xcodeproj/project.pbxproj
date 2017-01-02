@@ -17,6 +17,8 @@
 		427034621E1AEF8A00986DCE /* WordViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427034611E1AEF8A00986DCE /* WordViewer.storyboard */; };
 		427034641E1AF60E00986DCE /* WordViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427034631E1AF60E00986DCE /* WordViewerViewController.swift */; };
 		427034671E1B026800986DCE /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427034661E1B026800986DCE /* HelperFunctions.swift */; };
+		4270346A1E1B092800986DCE /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427034691E1B092800986DCE /* AppCoordinator.swift */; };
+		4270346C1E1B0B8800986DCE /* DeckPickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270346B1E1B0B8800986DCE /* DeckPickerCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		427034611E1AEF8A00986DCE /* WordViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WordViewer.storyboard; sourceTree = "<group>"; };
 		427034631E1AF60E00986DCE /* WordViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordViewerViewController.swift; sourceTree = "<group>"; };
 		427034661E1B026800986DCE /* HelperFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		427034691E1B092800986DCE /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		4270346B1E1B0B8800986DCE /* DeckPickerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckPickerCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 			children = (
 				427034651E1B025200986DCE /* Helpers */,
 				427034381E1991A800986DCE /* AppDelegate.swift */,
+				427034691E1B092800986DCE /* AppCoordinator.swift */,
 				4270345E1E1AD1DF00986DCE /* Features */,
 				4270343F1E1991A800986DCE /* Assets.xcassets */,
 				427034411E1991A800986DCE /* LaunchScreen.storyboard */,
@@ -109,6 +114,7 @@
 			children = (
 				4270345F1E1AEE6E00986DCE /* Deck Picker */,
 				427034601E1AEF3F00986DCE /* Word Viewer */,
+				4270346B1E1B0B8800986DCE /* DeckPickerCoordinator.swift */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -246,6 +252,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4270346A1E1B092800986DCE /* AppCoordinator.swift in Sources */,
+				4270346C1E1B0B8800986DCE /* DeckPickerCoordinator.swift in Sources */,
 				427034671E1B026800986DCE /* HelperFunctions.swift in Sources */,
 				427034391E1991A800986DCE /* AppDelegate.swift in Sources */,
 				4270345D1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift in Sources */,
