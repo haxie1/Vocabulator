@@ -14,6 +14,8 @@
 		427034591E19944D00986DCE /* VocabDeckPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427034581E19944D00986DCE /* VocabDeckPicker.storyboard */; };
 		4270345B1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270345A1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift */; };
 		4270345D1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270345C1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift */; };
+		427034621E1AEF8A00986DCE /* WordViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427034611E1AEF8A00986DCE /* WordViewer.storyboard */; };
+		427034641E1AF60E00986DCE /* WordViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427034631E1AF60E00986DCE /* WordViewerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		427034581E19944D00986DCE /* VocabDeckPicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VocabDeckPicker.storyboard; sourceTree = "<group>"; };
 		4270345A1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabDeckPickerCollectionViewController.swift; sourceTree = "<group>"; };
 		4270345C1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabDeckCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		427034611E1AEF8A00986DCE /* WordViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WordViewer.storyboard; sourceTree = "<group>"; };
+		427034631E1AF60E00986DCE /* WordViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordViewerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +104,29 @@
 		4270345E1E1AD1DF00986DCE /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				4270345F1E1AEE6E00986DCE /* Deck Picker */,
+				427034601E1AEF3F00986DCE /* Word Viewer */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
+		4270345F1E1AEE6E00986DCE /* Deck Picker */ = {
+			isa = PBXGroup;
+			children = (
 				4270345A1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift */,
 				4270345C1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift */,
 				427034581E19944D00986DCE /* VocabDeckPicker.storyboard */,
 			);
-			name = Features;
+			name = "Deck Picker";
+			sourceTree = "<group>";
+		};
+		427034601E1AEF3F00986DCE /* Word Viewer */ = {
+			isa = PBXGroup;
+			children = (
+				427034611E1AEF8A00986DCE /* WordViewer.storyboard */,
+				427034631E1AF60E00986DCE /* WordViewerViewController.swift */,
+			);
+			name = "Word Viewer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +216,7 @@
 			files = (
 				427034591E19944D00986DCE /* VocabDeckPicker.storyboard in Resources */,
 				427034431E1991A800986DCE /* LaunchScreen.storyboard in Resources */,
+				427034621E1AEF8A00986DCE /* WordViewer.storyboard in Resources */,
 				427034401E1991A800986DCE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +237,7 @@
 			files = (
 				427034391E1991A800986DCE /* AppDelegate.swift in Sources */,
 				4270345D1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift in Sources */,
+				427034641E1AF60E00986DCE /* WordViewerViewController.swift in Sources */,
 				4270345B1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

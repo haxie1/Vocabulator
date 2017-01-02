@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="e71-fi-dk0">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Word Viewer View Controller-->
+        <scene sceneID="zG6-6x-065">
+            <objects>
+                <viewController storyboardIdentifier="WordViewerViewController" id="WpX-Zk-a0v" customClass="WordViewerViewController" customModule="Vocabulator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="OP6-gS-MaM"/>
+                        <viewControllerLayoutGuide type="bottom" id="j5l-wU-hj3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QbW-IU-mSD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tml-Ek-G7p">
+                                <rect key="frame" x="16" y="84" width="343" height="583"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" alignment="firstBaseline" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1YF-0o-BUM">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="26.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGx-r4-yzU">
+                                                <rect key="frame" x="0.0" y="0.0" width="54" height="26.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Az2-4W-lCN">
+                                                <rect key="frame" x="64" y="6.5" width="279" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEX-T9-M2J">
+                                        <rect key="frame" x="0.0" y="31.5" width="343" height="551.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="tml-Ek-G7p" secondAttribute="trailing" id="2Ka-Uy-19V"/>
+                            <constraint firstItem="j5l-wU-hj3" firstAttribute="top" secondItem="tml-Ek-G7p" secondAttribute="bottom" id="OSs-Sa-fLK"/>
+                            <constraint firstItem="tml-Ek-G7p" firstAttribute="top" secondItem="OP6-gS-MaM" secondAttribute="bottom" constant="20" id="e5L-eR-yBQ"/>
+                            <constraint firstItem="tml-Ek-G7p" firstAttribute="leading" secondItem="QbW-IU-mSD" secondAttribute="leadingMargin" id="pAJ-Fq-xRA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bTR-As-h5L"/>
+                    <connections>
+                        <outlet property="alternateLabel" destination="Az2-4W-lCN" id="TVl-fO-X2O"/>
+                        <outlet property="definitionTextView" destination="IEX-T9-M2J" id="QeI-IP-pnA"/>
+                        <outlet property="wordLabel" destination="xGx-r4-yzU" id="HEF-7f-6iK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HN6-fP-fze" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="589.60000000000002" y="28.335832083958024"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ig2-qF-zZo">
+            <objects>
+                <navigationController storyboardIdentifier="WordViewerNavController" automaticallyAdjustsScrollViewInsets="NO" id="e71-fi-dk0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KnC-oN-rT7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WpX-Zk-a0v" kind="relationship" relationship="rootViewController" id="174-S3-1UK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MDk-SR-fvY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-170" y="28"/>
+        </scene>
+    </scenes>
+</document>
