@@ -60,10 +60,17 @@
                             <constraint firstItem="tml-Ek-G7p" firstAttribute="leading" secondItem="QbW-IU-mSD" secondAttribute="leadingMargin" id="pAJ-Fq-xRA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="bTR-As-h5L"/>
+                    <navigationItem key="navigationItem" id="bTR-As-h5L">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Ijq-Hf-89U">
+                            <connections>
+                                <action selector="donePressed:" destination="WpX-Zk-a0v" id="BMw-t2-tJJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="alternateLabel" destination="Az2-4W-lCN" id="TVl-fO-X2O"/>
                         <outlet property="definitionTextView" destination="IEX-T9-M2J" id="QeI-IP-pnA"/>
+                        <outlet property="doneButton" destination="Ijq-Hf-89U" id="Tzc-dO-5F7"/>
                         <outlet property="wordLabel" destination="xGx-r4-yzU" id="HEF-7f-6iK"/>
                     </connections>
                 </viewController>

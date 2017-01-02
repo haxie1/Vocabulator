@@ -60,7 +60,7 @@ class VocabDeckPickerCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        todo("Manage controller from a Coordinator")
         self.title = self.deckPickerViewModel?.title ?? ""
     }
 
@@ -99,6 +99,7 @@ class VocabDeckPickerCollectionViewController: UICollectionViewController {
         }
     }
 
+    
     // MARK: UICollectionViewDelegate
 //    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
 //        return true
@@ -108,6 +109,9 @@ class VocabDeckPickerCollectionViewController: UICollectionViewController {
 //        return true
 //    }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        todo("Handle cell selection and navigation through the eventing system")
+    }
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
