@@ -8,15 +8,25 @@
 
 import UIKit
 
-protocol DeckCollection {
-    var title: String { get }
-    var decks: [WordDeck] { get }
-    var childCount: Int { get }
+struct DeckCollection {
+    let title: String
+    var decks: [DeckViewModel]
+    var childCount: Int {
+        return decks.count
+    }
+}
+
+struct DeckViewModel: WordDeck {
+    let title: String
+    let imageName: String
 }
 
 class VocabDeckPickerViewModel {
     let title: String
     private (set) var sections: [DeckCollection] = []
+    var bodyBackgroundColor: UIColor {
+        return .groupTableViewBackground
+    }
     
     init(withTitle title: String) {
         self.title = title
@@ -26,11 +36,17 @@ class VocabDeckPickerViewModel {
         self.init(withTitle: "Vocabulator")
     }
     
+    class func emptyPicker() -> VocabDeckPickerViewModel {
+        let vm = VocabDeckPickerViewModel()
+        vm.sections = [DeckCollection(title: "No Word Decks", decks: [])]
+        return vm
+    }
+    
     func childCount(forSection section: Int) -> Int {
         return self.sections[section].childCount
     }
     
-    func wordDeck(forIndexPath indexPath: IndexPath) -> WordDeck {
+    func wordDeck(forIndexPath indexPath: IndexPath) -> DeckViewModel {
         return self.sections[indexPath.section].decks[indexPath.row]
     }
 }
@@ -50,18 +66,21 @@ class VocabDeckCollectionHeaderView: UICollectionReusableView {
 }
 
 class VocabDeckPickerCollectionViewController: UICollectionViewController {
+    private var needsDeferredReload: Bool = false
     var deckPickerViewModel: VocabDeckPickerViewModel? {
         didSet {
-            if self.isViewLoaded && self.view.window != nil {
-                self.collectionView?.reloadData()
+            guard let model = deckPickerViewModel else {
+                return
             }
+            self.applyViewModel(model)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        todo("Manage controller from a Coordinator")
-        self.title = self.deckPickerViewModel?.title ?? ""
+        if self.needsDeferredReload {
+            self.applyViewModel(self.deckPickerViewModel!)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -127,4 +146,14 @@ class VocabDeckPickerCollectionViewController: UICollectionViewController {
     }
     */
 
+    private func applyViewModel(_ viewModel: VocabDeckPickerViewModel) {
+        if self.isViewLoaded {
+            self.title = viewModel.title
+            self.collectionView?.backgroundColor = viewModel.bodyBackgroundColor
+            self.collectionView?.reloadData()
+            self.needsDeferredReload = false
+        } else {
+            self.needsDeferredReload = true
+        }
+    }
 }

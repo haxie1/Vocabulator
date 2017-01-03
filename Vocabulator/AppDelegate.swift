@@ -11,11 +11,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    var appCoordinator: AppCoordinator = AppCoordinator()
+    var appCoordinator: AppCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        self.window = self.appCoordinator.window
-        self.appCoordinator.begin()
+        self.appCoordinator = AppCoordinator(withMainWindow: self.window!)
+        self.appCoordinator?.begin()
         todo("Decide if the AppCoordinator.begin() should get called now or didBecomeActive?")
         return true
     }

@@ -8,30 +8,7 @@
 
 import UIKit
 
-protocol Coordinator: class {
-    var children: [Coordinator] { get set }
-    func begin()
-    func end()
-    
-    func push(coordinator: Coordinator)
-    func pop() -> Coordinator?
-}
-
-extension Coordinator {
-    func push(coordinator: Coordinator) {
-        guard !self.children.contains( where: { $0 === coordinator } ) else {
-            return
-        }
-        
-        self.children.append(coordinator)
-    }
-    
-    func pop() -> Coordinator? {
-        return self.children.last
-    }
-}
 // Main app coordinator. It managed the VocabDeckPickerViewController and all other coordinators
-
 class AppCoordinator: Coordinator {
     var children: [Coordinator] = []
     let window: UIWindow
@@ -41,20 +18,36 @@ class AppCoordinator: Coordinator {
         self.window = window
     }
     
-    convenience init() {
-        self.init(withMainWindow: UIWindow())
+    func begin() {
+        
+        self.loadInitialViewController()
+        if !self.window.isKeyWindow {
+            self.window.makeKeyAndVisible()
+        }
     }
     
-    func begin() {
+    func end() {}
+    
+    private func loadInitialViewController() {
+        guard self.managedController == nil else {
+            // don't do this work if we already loaded the managed vc
+            return
+        }
+        
         let storyboard = UIStoryboard(name: "VocabDeckPicker", bundle: nil)
         guard let nav = storyboard.instantiateInitialViewController() as? UINavigationController else {
             fatalError("Expected a UINavigationController to be loaded from the VocabDeckPicker.storyboard")
         }
         
+        let topVC = nav.topViewController as! VocabDeckPickerCollectionViewController
         self.managedController = nav
         self.window.rootViewController = nav
-        self.window.makeKeyAndVisible()
+        topVC.deckPickerViewModel = self.emptyDeckViewModel()
     }
     
-    func end() {}
+    private func emptyDeckViewModel() -> VocabDeckPickerViewModel {
+        return VocabDeckPickerViewModel.emptyPicker()
+    }
+    
+    
 }
