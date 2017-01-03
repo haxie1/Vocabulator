@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		425606B21E1C2504003686CB /* EventDistributerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425606B11E1C2504003686CB /* EventDistributerTestCase.swift */; };
 		427034391E1991A800986DCE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427034381E1991A800986DCE /* AppDelegate.swift */; };
 		427034401E1991A800986DCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4270343F1E1991A800986DCE /* Assets.xcassets */; };
 		427034431E1991A800986DCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427034411E1991A800986DCE /* LaunchScreen.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		425606B11E1C2504003686CB /* EventDistributerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDistributerTestCase.swift; sourceTree = "<group>"; };
 		427034351E1991A800986DCE /* Vocabulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vocabulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		427034381E1991A800986DCE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4270343F1E1991A800986DCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				4270344D1E1991A800986DCE /* VocabulatorTests.swift */,
 				4270344F1E1991A800986DCE /* Info.plist */,
+				425606B11E1C2504003686CB /* EventDistributerTestCase.swift */,
 			);
 			path = VocabulatorTests;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				425606B21E1C2504003686CB /* EventDistributerTestCase.swift in Sources */,
 				4270344E1E1991A800986DCE /* VocabulatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +480,7 @@
 				427034541E1991A800986DCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		427034551E1991A800986DCE /* Build configuration list for PBXNativeTarget "VocabulatorTests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +489,7 @@
 				427034571E1991A800986DCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

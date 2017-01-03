@@ -65,17 +65,21 @@ class AppCoordinator: Coordinator {
             controller.present(rootVC, animated: true, completion: nil)
         }
     }
-    
-    private func emptyDeckViewModel() -> VocabDeckPickerViewModel {
+}
+
+
+// Possible that these are just throwaway functions. Certainly the testDeckVM() is.
+extension AppCoordinator {
+    fileprivate func emptyDeckViewModel() -> VocabDeckPickerViewModel {
         return VocabDeckPickerViewModel.emptyPicker()
     }
     
-    private func testDeckVM() -> VocabDeckPickerViewModel {
+    fileprivate func testDeckVM() -> VocabDeckPickerViewModel {
         let decks = [DeckViewModel(deckID: UUID(), title: "Week 1"), DeckViewModel(deckID: UUID(), title: "Week 2")]
         let collection = DeckCollection(title: "Word Decks", decks: decks)
         let deckVM = VocabDeckPickerViewModel()
         deckVM.sections = [collection]
         return deckVM
     }
-    
+ 
 }
