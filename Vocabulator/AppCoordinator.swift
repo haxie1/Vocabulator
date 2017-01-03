@@ -10,6 +10,7 @@ import UIKit
 
 // Main app coordinator. It managed the VocabDeckPickerViewController and all other coordinators
 class AppCoordinator: Coordinator {
+    weak var parent: Coordinator? = nil
     var children: [Coordinator] = []
     let window: UIWindow
     var managedController: UINavigationController?
@@ -55,14 +56,10 @@ class AppCoordinator: Coordinator {
     }
     
     private func presentWordViewer(forSelection selection: DeckPickerEvents.DeckSelection) {
-        todo("build the WordViewer Coordinator and push it")
         if let controller = self.managedController {
-            let wordViewerSB = UIStoryboard(name: "WordViewer", bundle: nil)
-            let rootVC = wordViewerSB.instantiateInitialViewController() as! UINavigationController
-            let viewModel = WordViewerViewModel(word: "Dude", pronunciation: "\\dood\\", definition: "A phrase used to refer to a friend")
-            let vc = rootVC.topViewController as! WordViewerViewController
-            vc.viewModel = viewModel
-            controller.present(rootVC, animated: true, completion: nil)
+            let wordViewerCoordinator = WordViewerCoordinator(withPresentingController: controller)
+            self.push(coordinator: wordViewerCoordinator)
+            wordViewerCoordinator.begin()
         }
     }
 }

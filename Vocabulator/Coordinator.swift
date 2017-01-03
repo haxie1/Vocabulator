@@ -8,12 +8,15 @@
 
 import Foundation
 protocol Coordinator: class {
+    var parent: Coordinator? { get set }
     var children: [Coordinator] { get set }
     func begin()
     func end()
     
     func push(coordinator: Coordinator)
-    func pop() -> Coordinator?
+    @discardableResult func pop() -> Coordinator?
+    
+    func childDidEnd()
 }
 
 extension Coordinator {
@@ -21,11 +24,22 @@ extension Coordinator {
         guard !self.children.contains( where: { $0 === coordinator } ) else {
             return
         }
-        
+        coordinator.parent = self
         self.children.append(coordinator)
     }
     
-    func pop() -> Coordinator? {
-        return self.children.last
+    @discardableResult func pop() -> Coordinator? {
+        guard self.children.count > 0 else {
+            return nil
+        }
+        
+        let child = self.children.removeLast()
+        child.parent = nil
+        return child
+    }
+    
+    func childDidEnd() {
+        // defualt implementation does nothing
+        self.pop()
     }
 }

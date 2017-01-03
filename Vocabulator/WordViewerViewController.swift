@@ -40,7 +40,7 @@ class WordViewerViewController: UIViewController {
     
     
     @IBAction func donePressed(_ sender: Any) {
-        todo("Handle the Done press through the eventing system")
+        WordViewerEvents.cancel()
     }
     
     private func applyViewModel(viewModel: WordViewerViewModel) {
