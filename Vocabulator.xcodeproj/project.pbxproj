@@ -20,6 +20,7 @@
 		4270346A1E1B092800986DCE /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427034691E1B092800986DCE /* AppCoordinator.swift */; };
 		4270346E1E1B1D1600986DCE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4270346D1E1B1D1600986DCE /* Coordinator.swift */; };
 		427034711E1B1F6B00986DCE /* EventDistributer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427034701E1B1F6B00986DCE /* EventDistributer.swift */; };
+		427034731E1B36AC00986DCE /* DeckPickerEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427034721E1B36AC00986DCE /* DeckPickerEvents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		427034691E1B092800986DCE /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		4270346D1E1B1D1600986DCE /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		427034701E1B1F6B00986DCE /* EventDistributer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDistributer.swift; sourceTree = "<group>"; };
+		427034721E1B36AC00986DCE /* DeckPickerEvents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckPickerEvents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				4270345A1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift */,
 				4270345C1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift */,
 				427034581E19944D00986DCE /* VocabDeckPicker.storyboard */,
+				427034721E1B36AC00986DCE /* DeckPickerEvents.swift */,
 			);
 			name = "Deck Picker";
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				4270346A1E1B092800986DCE /* AppCoordinator.swift in Sources */,
 				427034671E1B026800986DCE /* HelperFunctions.swift in Sources */,
 				427034391E1991A800986DCE /* AppDelegate.swift in Sources */,
+				427034731E1B36AC00986DCE /* DeckPickerEvents.swift in Sources */,
 				4270345D1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift in Sources */,
 				427034711E1B1F6B00986DCE /* EventDistributer.swift in Sources */,
 				427034641E1AF60E00986DCE /* WordViewerViewController.swift in Sources */,

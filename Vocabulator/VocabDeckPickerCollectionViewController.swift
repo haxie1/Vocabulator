@@ -17,13 +17,20 @@ struct DeckCollection {
 }
 
 struct DeckViewModel: WordDeck {
+    let deckID: UUID
     let title: String
     let imageName: String
+    
+    init(deckID: UUID, title: String, imageName: String = "WordDeckDefault") {
+        self.deckID = deckID
+        self.title = title
+        self.imageName = imageName
+    }
 }
 
 class VocabDeckPickerViewModel {
     let title: String
-    private (set) var sections: [DeckCollection] = []
+    var sections: [DeckCollection] = []
     var bodyBackgroundColor: UIColor {
         return .groupTableViewBackground
     }
@@ -129,7 +136,8 @@ class VocabDeckPickerCollectionViewController: UICollectionViewController {
 //    }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        todo("Handle cell selection and navigation through the eventing system")
+        let wordDeck = self.deckPickerViewModel?.wordDeck(forIndexPath: indexPath)
+        DeckPickerEvents.selectDeck(id: wordDeck!.deckID)
     }
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item

@@ -9,6 +9,7 @@
 import UIKit
 
 protocol WordDeck {
+    var deckID: UUID { get }
     var title: String { get }
     var imageName: String { get }
 }
@@ -18,8 +19,8 @@ class VocabDeckCollectionViewCell: UICollectionViewCell {
         didSet {
             if let deck = self.viewModel {
                 self.titleLabel.text = deck.title
-                let image = UIImage(named: deck.imageName) ?? #imageLiteral(resourceName: "WordDeckDefault")
-                self.imageView.image = image.withRenderingMode(.alwaysTemplate)
+                let image = UIImage(named: deck.imageName)
+                self.imageView.image = image?.withRenderingMode(.alwaysTemplate)
             }
         }
     }

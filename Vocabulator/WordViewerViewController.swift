@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol WordViewerViewModel {
-    var word: String { get }
-    var pronunciation: String { get }
-    var definition: String { get }
+struct WordViewerViewModel {
+    let word: String
+    let pronunciation: String
+    let definition: String
 }
 
 class WordViewerViewController: UIViewController {
