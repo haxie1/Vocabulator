@@ -14,7 +14,14 @@ typealias EventHandler<T> = (T) -> Void
 
 class EventDistributer {
     static let shared = EventDistributer()
-    private(set) var registry: [(uuid: UUID, callback: Any)] = []
+    
+    #if DEBUG // Is there a better way to isolate this for testing?
+    init() {}
+    #else
+    private init() {}
+    #endif
+    
+    private(set) var registry: [(uuid: UUID, objectID: ObjectIdentifier, callback: Any)] = []
     
     @discardableResult func register<T: Event, U: AnyObject>(target: U, handler: @escaping EventHandler<T>) -> UUID {
         let callback = { [weak target] (arg: T) -> Bool in
@@ -26,9 +33,9 @@ class EventDistributer {
             }
         } as Any
         
-        todo("Decide how to map the target and the UUID together in such a way that if the target does go away and has multiple callbacks registered, they will all be removed.")
-        
-        let reg = (uuid: UUID(), callback: callback)
+        // an identifier to unique the target object. Every registered handler for this target will use the same identifier.
+        let objectID = ObjectIdentifier(target)
+        let reg = (uuid: UUID(), objectID: objectID, callback: callback)
         self.registry.append(reg)
         return reg.uuid
     }
@@ -47,11 +54,16 @@ class EventDistributer {
     
     func distribute<T: Event>(event: T) {
         var cleanup: [UUID] = []
+        var cleanupID: ObjectIdentifier?
         for reg in self.registry {
             if let callback = reg.callback as? (T) -> Bool {
                 if !callback(event) {
-                    cleanup.append(reg.uuid)
+                    cleanupID = reg.objectID
                 }
+            }
+            
+            if let id = cleanupID, reg.objectID == id {
+                cleanup.append(reg.uuid)
             }
         }
         

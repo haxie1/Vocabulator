@@ -11,6 +11,10 @@ import XCTest
 
 struct MockEvent: Event {}
 struct BogusEvent: Event {}
+class TestTarget {
+    var handlerTwo: (BogusEvent) -> Void = { _ in }
+    var handler: (MockEvent) -> Void = { _ in}
+}
 
 class EventDistributerTestCase: XCTestCase {
     let distributer = EventDistributer()
@@ -20,10 +24,8 @@ class EventDistributerTestCase: XCTestCase {
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         self.distributer.unregisterAll()
         super.tearDown()
-        
     }
     
     func testRegisteringAHandler() {
@@ -61,6 +63,7 @@ class EventDistributerTestCase: XCTestCase {
         self.distributer.register(target: self) { (bogus: BogusEvent) in
             XCTFail("This handler shouldn't have been called")
         }
+        
         var called = false
         self.distributer.register(target: self) { (event: MockEvent) in
             called = true
@@ -68,6 +71,31 @@ class EventDistributerTestCase: XCTestCase {
         
         self.distributer.distribute(event: MockEvent())
         XCTAssertTrue(called)
+    }
+    
+    func testHandlersAreCleanedUpWhenTargetDisappears() {
+        var testTarget: TestTarget? = TestTarget()
+        self.distributer.register(target: testTarget!, handler: testTarget!.handler)
+        XCTAssert(self.distributer.registryCount == 1)
+        
+        testTarget = nil
+        
+        self.distributer.distribute(event: MockEvent())
+        XCTAssert(self.distributer.registryCount == 0)
+    }
+    
+    func testAllHandlersForATargetAreRemovedWhenTheTargetIsRemoved() {
+        var testTarget: TestTarget? = TestTarget()
+        
+        self.distributer.register(target: testTarget!, handler: testTarget!.handler)
+        self.distributer.register(target: testTarget!, handler: testTarget!.handlerTwo)
+        self.distributer.register(target: self) { (event: MockEvent) in }
+        XCTAssert(self.distributer.registryCount == 3)
+        
+        testTarget = nil
+        self.distributer.distribute(event: MockEvent())
+        XCTAssert(self.distributer.registryCount == 1)
+        
     }
 }
 
