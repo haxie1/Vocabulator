@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		425606B21E1C2504003686CB /* EventDistributerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425606B11E1C2504003686CB /* EventDistributerTestCase.swift */; };
 		425606F51E1C5EC3003686CB /* WordViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425606F41E1C5EC3003686CB /* WordViewerCoordinator.swift */; };
+		425606F71E1C80D6003686CB /* DemoWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 425606F61E1C80D6003686CB /* DemoWords.json */; };
 		427034391E1991A800986DCE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427034381E1991A800986DCE /* AppDelegate.swift */; };
 		427034401E1991A800986DCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4270343F1E1991A800986DCE /* Assets.xcassets */; };
 		427034431E1991A800986DCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427034411E1991A800986DCE /* LaunchScreen.storyboard */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		425606B11E1C2504003686CB /* EventDistributerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDistributerTestCase.swift; sourceTree = "<group>"; };
 		425606F41E1C5EC3003686CB /* WordViewerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordViewerCoordinator.swift; sourceTree = "<group>"; };
+		425606F61E1C80D6003686CB /* DemoWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DemoWords.json; sourceTree = "<group>"; };
 		427034351E1991A800986DCE /* Vocabulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vocabulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		427034381E1991A800986DCE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4270343F1E1991A800986DCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				4270343F1E1991A800986DCE /* Assets.xcassets */,
 				427034411E1991A800986DCE /* LaunchScreen.storyboard */,
 				427034441E1991A800986DCE /* Info.plist */,
+				425606F61E1C80D6003686CB /* DemoWords.json */,
 			);
 			path = Vocabulator;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				427034591E19944D00986DCE /* VocabDeckPicker.storyboard in Resources */,
 				427034431E1991A800986DCE /* LaunchScreen.storyboard in Resources */,
 				427034621E1AEF8A00986DCE /* WordViewer.storyboard in Resources */,
+				425606F71E1C80D6003686CB /* DemoWords.json in Resources */,
 				427034401E1991A800986DCE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

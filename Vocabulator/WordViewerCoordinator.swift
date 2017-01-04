@@ -70,6 +70,7 @@ class WordViewerCoordinator: Coordinator {
         }
         
         self.presentingController.dismiss(animated: true) { [weak self] in
+            
             self?.parent?.childDidEnd()
         }
     }
@@ -77,6 +78,7 @@ class WordViewerCoordinator: Coordinator {
     private func handleCompletion(action: WordViewerEvents.Action) {
         switch action {
         case .cancel, .complete:
+            todo("decide if the child should call end() or if that should be something that the parent does?")
             self.end()
             break
         default:
