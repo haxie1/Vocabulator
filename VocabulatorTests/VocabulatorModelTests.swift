@@ -36,6 +36,23 @@ class VocabulatorModelTests: XCTestCase {
     
     
 }
+extension VocabulatorModelTests {
+    var jsonCollectionID: String {
+        return self.testData.value("id", "")
+    }
+    
+    var jsonCollectionTitle: String {
+        return self.testData.value("title", "")
+    }
+    
+    var jsonDecks: [[String : Any]] {
+        return self.testData.value("decks", [])
+    }
+    
+    var deckCount: Int {
+        return self.jsonDecks.count
+    }
+}
 
 class VocabulatorDeckCollectionTests: VocabulatorModelTests {
     var collection: VocabulatorDeckCollection!
@@ -51,7 +68,7 @@ class VocabulatorDeckCollectionTests: VocabulatorModelTests {
     }
     
     func testIDPropertyIsSet() {
-        let uuid = UUID(uuidString: self.jsonID)!
+        let uuid = UUID(uuidString: self.jsonCollectionID)!
         XCTAssertEqual(self.collection.id, uuid)
     }
     
@@ -61,7 +78,7 @@ class VocabulatorDeckCollectionTests: VocabulatorModelTests {
     }
     
     func testTitlePropertyIsSet() {
-        XCTAssertEqual(self.collection.name, self.jsonTitle)
+        XCTAssertEqual(self.collection.name, self.jsonCollectionTitle)
     }
     
     func testDefaultTitleIsUsedIfTileIsMissing() {
@@ -80,20 +97,64 @@ class VocabulatorDeckCollectionTests: VocabulatorModelTests {
     
 }
 
-extension VocabulatorDeckCollectionTests {
-    var jsonID: String {
-        return self.testData.value("id", "")
+
+
+class VocabulatorDeckTests: VocabulatorModelTests {
+    var jsonDeck: [String : Any] {
+        guard let deck = self.jsonDecks.first else {
+            XCTFail("Expected at leats one test deck in the data")
+            return [:]
+        }
+        return deck
     }
     
-    var jsonTitle: String {
-        return self.testData.value("title", "")
+    var jsonID: UUID {
+        return UUID(uuidString: self.jsonDeck.value("id", ""))!
+    }
+
+    var jsonDeckTitle: String {
+        return self.jsonDeck.value("title", "")
     }
     
-    var jsonDecks: [[String : Any]] {
-        return self.testData.value("decks", [])
+    var wordCount: Int {
+        return self.jsonDeck.value("words", []).count
     }
     
-    var deckCount: Int {
-        return self.jsonDecks.count
+    lazy var deck: VocabulatorDeck = {
+        return VocabulatorDeck(withJSON: self.jsonDeck)!
+    }()
+
+    override func setUp() {
+        super.setUp()
+    }
+    
+    func testCreatesADeckWithValidJSON() {
+        let deck = VocabulatorDeck(withJSON: self.jsonDeck)
+        XCTAssertNotNil(deck)
+    }
+    
+    func testCreatesADeckWithAID() {
+        XCTAssertEqual(self.deck.id, self.jsonID)
+    }
+    
+    func testReturnsNilIfIDCantBeCreated() {
+        let deck = VocabulatorDeck(withJSON: ["id" : "BadID"])
+        XCTAssertNil(deck)
+    }
+    
+    func testCreatesADeckWithATitle() {
+        XCTAssertEqual(self.deck.title, self.jsonDeckTitle)
+    }
+    
+    func testCreatesADeckWithMappedWords() {
+        XCTAssert(self.deck.words.count == self.wordCount)
+    }
+    
+    func testCreatesAEmptyArrayIfNoWordsCanBeMapped() {
+        let deck = VocabulatorDeck(withJSON: ["id" : "E6E24949-895D-4D44-85E7-2FE541D72C0C"])
+        XCTAssert(deck?.words.count == 0)
     }
 }
+
+
+

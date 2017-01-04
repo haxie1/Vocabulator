@@ -39,15 +39,31 @@ struct VocabulatorDeckCollection: JSONMappable {
 }
 
 struct VocabulatorDeck: JSONMappable {
+    let id: UUID
+    let title: String
+    let words: [VocabulatorWord]
+    
     init?(withJSON json: JSON) {
+        guard let id = UUID(uuidString: json.value("id", "")) else {
+            return nil
+        }
+        self.id = id
+        self.title = json.value("title", "")
+        
+        let jsonWords: [JSON] = json.value("words", [])
+        self.words = jsonWords.flatMap { (json) in
+            return VocabulatorWord(withJSON: json)
+        }
     }
 }
 
-struct VocabulatorWord {
-    let id: UUID
-    let word: String
-    let pronunciation: String
-    let definition: String
+struct VocabulatorWord: JSONMappable {
+//    let id: UUID
+//    let word: String
+//    let pronunciation: String
+//    let definition: String
+    init?(withJSON json: JSON) {
+    }
 }
 
 class VocabulatorDataModel {
