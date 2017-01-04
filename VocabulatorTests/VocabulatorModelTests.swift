@@ -156,5 +156,63 @@ class VocabulatorDeckTests: VocabulatorModelTests {
     }
 }
 
-
+class VocabulatorWordTests: XCTestCase {
+    let jsonWord: [String : Any] = ["id" : "96A05669-359D-4F51-8AFC-C6E36E909A15",
+                                    "word" : "Audacious",
+                                    "pronunciation" : "[au·da·cious] adj",
+                                    "definition" : "Showing a willingness to take risks. “An audacious attack on the company.” Showing an impudent lack of respect. “An audacious move.”"]
+    
+    var jsonWordID: UUID {
+        return UUID(uuidString: self.jsonWord.value("id", ""))!
+    }
+    
+    lazy var word: VocabulatorWord = {
+        return VocabulatorWord(withJSON: self.jsonWord)!
+    }()
+    
+    func testCreatesAWordWithValidJSON() {
+        let word = VocabulatorWord(withJSON: self.jsonWord)
+        XCTAssertNotNil(word)
+    }
+    
+    
+    func testCreatesAWordWithAnID() {
+        XCTAssertEqual(self.word.id, self.jsonWordID)
+    }
+    
+    func testReturnsNilIfWordCantBeCreatedWithAnID() {
+        let word = VocabulatorWord(withJSON: ["id" : "Bogus"])
+        XCTAssertNil(word)
+    }
+    
+    func testCreatesWordWithAWord() {
+        let wordString = self.jsonWord.value("word", "")
+        XCTAssertEqual(self.word.word, wordString)
+    }
+    
+    func testReturnsNilIfCantCreateWithAWord() {
+        let word = VocabulatorWord(withJSON: ["id" : "96A05669-359D-4F51-8AFC-C6E36E909A15"])
+        XCTAssertNil(word)
+    }
+    
+    func testCreatesWithAPronunciation() {
+        let pronunciation: String = self.jsonWord.value("pronunciation", "")
+        XCTAssertEqual(self.word.pronunciation, pronunciation)
+    }
+    
+    func testCreatesAnEmptyStringIfNoPronunciationIsMapped() {
+        let word = VocabulatorWord(withJSON: ["id" : "96A05669-359D-4F51-8AFC-C6E36E909A15", "word" : "Foo", "definition" : "bar"])
+        XCTAssertEqual(word?.pronunciation, "")
+    }
+    
+    func testCreatesWithADefinition() {
+        let def: String = self.jsonWord.value("definition", "")
+        XCTAssertEqual(self.word.definition, def)
+    }
+    
+    func testReturnsNilIfNoDefinitionCanBeMapped() {
+        let word = VocabulatorWord(withJSON: ["id" : "96A05669-359D-4F51-8AFC-C6E36E909A15", "word" : "Foo"])
+        XCTAssertNil(word)
+    }
+}
 

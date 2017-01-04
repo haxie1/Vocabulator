@@ -58,11 +58,27 @@ struct VocabulatorDeck: JSONMappable {
 }
 
 struct VocabulatorWord: JSONMappable {
-//    let id: UUID
-//    let word: String
-//    let pronunciation: String
-//    let definition: String
+    let id: UUID
+    let word: String
+    let pronunciation: String
+    let definition: String
+    
     init?(withJSON json: JSON) {
+        guard let id = UUID(uuidString: json.value("id", "")) else {
+            return nil
+        }
+        self.id = id
+        
+        guard let word: String = json.value("word") else {
+            return nil
+        }
+        
+        self.word = word
+        self.pronunciation = json.value("pronunciation", "")
+        guard let def: String = json.value("definition") else {
+            return nil
+        }
+        self.definition = def
     }
 }
 
