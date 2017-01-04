@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		422259221E1D7F16001D3C26 /* VocabulatorModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422259211E1D7F16001D3C26 /* VocabulatorModelTests.swift */; };
 		42291FC01E1D414600F3CBED /* VocabulatorDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42291FBF1E1D414600F3CBED /* VocabulatorDataModel.swift */; };
 		425606B21E1C2504003686CB /* EventDistributerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425606B11E1C2504003686CB /* EventDistributerTestCase.swift */; };
 		425606F51E1C5EC3003686CB /* WordViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425606F41E1C5EC3003686CB /* WordViewerCoordinator.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		422259211E1D7F16001D3C26 /* VocabulatorModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabulatorModelTests.swift; sourceTree = "<group>"; };
 		42291FBF1E1D414600F3CBED /* VocabulatorDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabulatorDataModel.swift; sourceTree = "<group>"; };
 		425606B11E1C2504003686CB /* EventDistributerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDistributerTestCase.swift; sourceTree = "<group>"; };
 		425606F41E1C5EC3003686CB /* WordViewerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordViewerCoordinator.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				4270344D1E1991A800986DCE /* VocabulatorTests.swift */,
 				4270344F1E1991A800986DCE /* Info.plist */,
 				425606B11E1C2504003686CB /* EventDistributerTestCase.swift */,
+				422259211E1D7F16001D3C26 /* VocabulatorModelTests.swift */,
 			);
 			path = VocabulatorTests;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				425606B21E1C2504003686CB /* EventDistributerTestCase.swift in Sources */,
+				422259221E1D7F16001D3C26 /* VocabulatorModelTests.swift in Sources */,
 				4270344E1E1991A800986DCE /* VocabulatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

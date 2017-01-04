@@ -8,26 +8,71 @@
 
 import Foundation
 
-protocol VocabulatorDeckCollection {
-    var id: UUID { get }
-    var name: String { get }
-    var decks: [VocabulatorDeck] { get }
+typealias JSON = [String : Any]
+protocol JSONMappable {
+    init?(withJSON json: JSON)
 }
 
-protocol VocabulatorDeck {
-    var id: UUID { get }
-    var title: String { get }
-    var words: [VocabulatorWord] { get }
+struct VocabulatorDeckCollection: JSONMappable {
+    let id: UUID
+    let name: String
+    let decks: [VocabulatorDeck]
+    
+    init?(withJSON json: JSON) {
+        guard JSONSerialization.isValidJSONObject(json) else {
+            return nil
+        }
+        
+        guard let id = UUID(uuidString: json.value("id", "")) else {
+            todo("should we throw for this case instead?")
+            return nil
+        }
+        self.id = id
+        
+        self.name = json.value("title", "Word Decks")
+        let jsonDecks: [JSON] = json.value("decks", [])
+        
+        self.decks = jsonDecks.flatMap { (json) in
+            return VocabulatorDeck(withJSON: json)
+        }
+    }
 }
 
-protocol VocabulatorWord {
-    var id: UUID { get }
-    var word: String { get }
-    var pronunciation: String { get }
-    var definition: String { get }
+struct VocabulatorDeck: JSONMappable {
+    init?(withJSON json: JSON) {
+    }
+}
+
+struct VocabulatorWord {
+    let id: UUID
+    let word: String
+    let pronunciation: String
+    let definition: String
 }
 
 class VocabulatorDataModel {
     typealias VocabulatorJSON = [String : AnyObject]
     
+    init(withURL fileURL: URL) {
+        
+    }
+    
+    init(withJSONData data: Data) {
+        
+    }
+}
+
+extension Dictionary where Value: Any {
+    // Once Swift supports generic subscripts, a func won't be necessary
+    
+    // optional result for a given key with type inferred
+    func value<T>(_ key: Key) -> T? {
+        return self[key] as? T
+    }
+    
+    // non-optional type for a given key with a default value.
+    // Note: technically the same as self.value(forKey: "key") ?? ""
+    func value<T>(_ key: Key, _ defaultValue: @autoclosure () -> T) -> T {
+        return self[key] as? T ?? defaultValue()
+    }
 }
