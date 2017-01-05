@@ -9,9 +9,16 @@
 import UIKit
 
 struct WordViewerViewModel {
+    let title: String
+    let wordIndex: Int
+    let totalWordCount: Int
     let word: String
     let pronunciation: String
     let definition: String
+    
+    var controllerTitle: String {
+        return self.title + " (\(self.wordIndex) of \(self.totalWordCount))"
+    }
 }
 
 class WordViewerViewController: UIViewController {
@@ -48,6 +55,7 @@ class WordViewerViewController: UIViewController {
             self.wordLabel.text = viewModel.word
             self.alternateLabel.text = viewModel.pronunciation
             self.definitionTextView.text = viewModel.definition
+            self.title = viewModel.controllerTitle
         }
     }
 }

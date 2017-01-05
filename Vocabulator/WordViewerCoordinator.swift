@@ -59,9 +59,10 @@ class WordViewerCoordinator: Coordinator {
             }
         }
         
-        let word = WordViewerViewModel(word: "Funky", pronunciation: "", definition: "A smell or odd thing")
+        let word = self.deck.words[0]
+        let wordVM = WordViewerViewModel(title: self.deck.title, wordIndex: 1, totalWordCount: self.deck.words.count, word: word.word, pronunciation: word.pronunciation, definition: word.definition)
         let wordViewerController = self.managedController.topViewController as! WordViewerViewController
-        wordViewerController.viewModel = word
+        wordViewerController.viewModel = wordVM
         self.presentingController.present(self.managedController, animated: true, completion: nil)
     }
     
