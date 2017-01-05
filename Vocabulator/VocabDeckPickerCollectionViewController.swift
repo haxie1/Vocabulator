@@ -8,15 +8,19 @@
 
 import UIKit
 
-struct DeckCollection {
-    let title: String
-    var decks: [DeckViewModel]
-    var childCount: Int {
-        return decks.count
-    }
+protocol DeckCollection {
+    var title: String { get }
+    var decks: [WordDeck] { get }
+    var childCount: Int { get }
 }
 
-struct DeckViewModel: WordDeck {
+struct EmptyDeckCollection: DeckCollection {
+    let title: String = "No Word Decks"
+    let decks: [WordDeck] = []
+    let childCount: Int = 0
+}
+
+struct DeckCellViewModel: WordDeck {
     let deckID: UUID
     let title: String
     let imageName: String
@@ -45,7 +49,7 @@ class VocabDeckPickerViewModel {
     
     class func emptyPicker() -> VocabDeckPickerViewModel {
         let vm = VocabDeckPickerViewModel()
-        vm.sections = [DeckCollection(title: "No Word Decks", decks: [])]
+        vm.sections = [EmptyDeckCollection()]
         return vm
     }
     
@@ -53,7 +57,7 @@ class VocabDeckPickerViewModel {
         return self.sections[section].childCount
     }
     
-    func wordDeck(forIndexPath indexPath: IndexPath) -> DeckViewModel {
+    func wordDeck(forIndexPath indexPath: IndexPath) -> WordDeck {
         return self.sections[indexPath.section].decks[indexPath.row]
     }
 }

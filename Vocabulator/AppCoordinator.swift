@@ -16,6 +16,8 @@ class AppCoordinator: Coordinator {
     var managedController: UINavigationController?
     var selectionID: UUID?
     
+    fileprivate let showDemoData: Bool = true
+    
     init(withMainWindow window: UIWindow) {
         self.window = window
     }
@@ -52,12 +54,17 @@ class AppCoordinator: Coordinator {
         let topVC = nav.topViewController as! VocabDeckPickerCollectionViewController
         self.managedController = nav
         self.window.rootViewController = nav
-        topVC.deckPickerViewModel = self.testDeckVM()
+        topVC.deckPickerViewModel = self.initialViewModel()
     }
     
     private func presentWordViewer(forSelection selection: DeckPickerEvents.DeckSelection) {
         if let controller = self.managedController {
-            let wordViewerCoordinator = WordViewerCoordinator(withPresentingController: controller)
+            guard let deck = VocabulatorDataModel.deck(withID: selection.deckID) else {
+                assertionFailure("Couldn't find a VocabulatorDeck with the id \(selection)")
+                return
+            }
+            
+            let wordViewerCoordinator = WordViewerCoordinator(withPresentingController: controller, deck: deck)
             self.push(coordinator: wordViewerCoordinator)
             wordViewerCoordinator.begin()
         }
@@ -67,16 +74,32 @@ class AppCoordinator: Coordinator {
 
 // Possible that these are just throwaway functions. Certainly the testDeckVM() is.
 extension AppCoordinator {
-    fileprivate func emptyDeckViewModel() -> VocabDeckPickerViewModel {
-        return VocabDeckPickerViewModel.emptyPicker()
+    func initialViewModel() -> VocabDeckPickerViewModel {
+        let collections = VocabulatorDataModel.collections(useDemoData: self.showDemoData)
+        let vmCollections = collections.map { return DeckCollectionViewModel(with: $0) }
+        let vm = VocabDeckPickerViewModel(withTitle: "Vocabulator")
+        vm.sections = vmCollections
+        return vm
+    }
+}
+
+struct DeckCollectionViewModel: DeckCollection {
+    private let backingCollection: VocabulatorDeckCollection
+    var title: String {
+        return backingCollection.name
     }
     
-    fileprivate func testDeckVM() -> VocabDeckPickerViewModel {
-        let decks = [DeckViewModel(deckID: UUID(), title: "Week 1"), DeckViewModel(deckID: UUID(), title: "Week 2")]
-        let collection = DeckCollection(title: "Word Decks", decks: decks)
-        let deckVM = VocabDeckPickerViewModel()
-        deckVM.sections = [collection]
-        return deckVM
+    var decks: [WordDeck] {
+        return self.backingCollection.decks.lazy.map { (deck) in
+            return DeckCellViewModel(deckID: deck.id, title: deck.title)
+        }
     }
- 
+    
+    var childCount: Int {
+        return self.backingCollection.decks.count
+    }
+    
+    init(with backingCollection: VocabulatorDeckCollection) {
+        self.backingCollection = backingCollection
+    }
 }

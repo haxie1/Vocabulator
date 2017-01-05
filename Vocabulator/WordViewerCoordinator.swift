@@ -39,13 +39,14 @@ class WordViewerCoordinator: Coordinator {
     
     let presentingController: UINavigationController
     let managedController: UINavigationController
+    let deck: VocabulatorDeck
     
-    init(withPresentingController controller: UINavigationController) {
+    init(withPresentingController controller: UINavigationController, deck: VocabulatorDeck) {
         self.presentingController = controller
         let storyboard = UIStoryboard(name: "WordViewer", bundle: nil)
         self.managedController = storyboard.instantiateInitialViewController() as! UINavigationController
+        self.deck = deck
     }
-    
     
     func begin() {
         self.actionEventsUUID = EventDistributer.shared.register(target: self) { (action: WordViewerEvents.Action) in

@@ -83,14 +83,50 @@ struct VocabulatorWord: JSONMappable {
 }
 
 class VocabulatorDataModel {
-    typealias VocabulatorJSON = [String : AnyObject]
-    
-    init(withURL fileURL: URL) {
+    private class DataProvider {
+        var collections: [VocabulatorDeckCollection] = []
         
+        static let shared = DataProvider()
+        static var useDemoData: Bool = false
+        
+        private init() {
+            if DataProvider.useDemoData {
+                let url = Bundle.main.url(forResource: "DemoWords", withExtension: "json")!
+                if let collection = self.collection(withURL: url) {
+                    self.collections.append(collection)
+                }
+                
+            } else {
+                todo("Support multiple collection documents")
+            }
+        }
+        
+        private func collection(withURL fileURL: URL) -> VocabulatorDeckCollection? {
+            guard let data = NSData(contentsOf: fileURL) else {
+                return nil
+            }
+            
+            if let json: JSON = try! JSONSerialization.jsonObject(with: data as Data, options: []) as? [String : Any] {
+                return VocabulatorDeckCollection(withJSON: json)
+            }
+            
+            return nil
+        }
     }
     
-    init(withJSONData data: Data) {
+    static func collections(useDemoData: Bool = false) -> [VocabulatorDeckCollection] {
+        DataProvider.useDemoData = useDemoData
+        return DataProvider.shared.collections
+    }
+    
+    static func deck(withID id: UUID) -> VocabulatorDeck? {
+        for collection in DataProvider.shared.collections {
+            if let aDeck = collection.decks.first(where: { $0.id == id }) {
+                return aDeck
+            }
+        }
         
+        return nil
     }
 }
 

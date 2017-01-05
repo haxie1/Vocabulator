@@ -36,7 +36,7 @@
                                             <rect key="frame" x="0.0" y="-3" width="75" height="103"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yo5-Qs-csd">
-                                            <rect key="frame" x="4" y="75.5" width="67" height="14.5"/>
+                                            <rect key="frame" x="4" y="81.5" width="67" height="14.5"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Zc3-Gb-7EI" secondAttribute="trailing" id="KZg-Zj-uBi"/>
                                     <constraint firstAttribute="bottom" secondItem="Zc3-Gb-7EI" secondAttribute="bottom" id="URm-Cu-auQ"/>
                                     <constraint firstItem="Zc3-Gb-7EI" firstAttribute="leading" secondItem="toq-ph-pdY" secondAttribute="leading" id="WHx-rv-gap"/>
-                                    <constraint firstItem="Yo5-Qs-csd" firstAttribute="bottom" secondItem="Zc3-Gb-7EI" secondAttribute="bottom" constant="-10" id="Xir-pE-fFT"/>
+                                    <constraint firstItem="Yo5-Qs-csd" firstAttribute="bottom" secondItem="Zc3-Gb-7EI" secondAttribute="bottom" constant="-4" id="Xir-pE-fFT"/>
                                     <constraint firstItem="Yo5-Qs-csd" firstAttribute="trailing" secondItem="Zc3-Gb-7EI" secondAttribute="trailing" constant="-4" id="Zb1-RJ-n7k"/>
                                     <constraint firstItem="Yo5-Qs-csd" firstAttribute="leading" secondItem="Zc3-Gb-7EI" secondAttribute="leading" constant="4" id="brg-x7-vU8"/>
                                     <constraint firstItem="Zc3-Gb-7EI" firstAttribute="top" secondItem="toq-ph-pdY" secondAttribute="top" constant="-3" id="sis-B6-GkB"/>
