@@ -95,7 +95,11 @@ struct WordProvider {
     private var currentWordIndex: Int = 0
 
     var currentWord: VocabulatorWord? {
-         return deck.words[currentWordIndex]
+        guard !deck.words.isEmpty else {
+            return nil
+        }
+        
+        return deck.words[currentWordIndex]
     }
 
     init(deck: VocabulatorDeck) {

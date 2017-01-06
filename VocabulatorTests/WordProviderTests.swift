@@ -64,6 +64,21 @@ class WordProviderTests: VocabulatorModelTests {
     }
     
     func testCurrentWordReturnsNilIfNoWords() {
-        todo("Implement this test")
+        let jsonDeck: [String: Any] = ["id" : testDeck.id.uuidString, "title" : testDeck.title, "words" : []]
+        let deck = VocabulatorDeck(withJSON: jsonDeck)!
+        let provider = WordProvider(deck: deck)
+        XCTAssertNil(provider.currentWord)
+    }
+    
+    func testCurrentWordReturnsLastWordAfterNextIsExahusted() {
+        let word = testDeck.words[0]
+        let jsonWord: [String: Any] = ["id" : word.id.uuidString, "word" : word.word, "pronunciation": word.pronunciation, "definintion": word.definition]
+        let jsonDeck: [String : Any] = ["id" : testDeck.id.uuidString, "title": testDeck.title, "words" : [jsonWord]]
+        let deck = VocabulatorDeck(withJSON: jsonDeck)!
+        var wordProvider = WordProvider(deck: deck)
+        let nextWord = wordProvider.next() // increment the deck index
+        _ = wordProvider.next() // increments past the end index of the deck's words.
+        
+        XCTAssertEqual(nextWord?.id, wordProvider.currentWord?.id)
     }
 }
