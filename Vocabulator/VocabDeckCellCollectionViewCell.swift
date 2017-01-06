@@ -20,7 +20,7 @@ class VocabDeckCollectionViewCell: UICollectionViewCell {
             if let deck = self.viewModel {
                 self.titleLabel.text = deck.title
                 let image = UIImage(named: deck.imageName)
-                self.imageView.image = image?.withRenderingMode(.alwaysTemplate)
+                self.imageView.image = image//?.withRenderingMode(.alwaysTemplate)
             }
         }
     }
@@ -31,7 +31,9 @@ class VocabDeckCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
     override var isHighlighted: Bool {
         set (newValue) {
             super.isHighlighted = newValue

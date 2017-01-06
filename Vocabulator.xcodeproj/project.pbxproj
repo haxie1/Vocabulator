@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		422259221E1D7F16001D3C26 /* VocabulatorModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422259211E1D7F16001D3C26 /* VocabulatorModelTests.swift */; };
 		42291FC01E1D414600F3CBED /* VocabulatorDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42291FBF1E1D414600F3CBED /* VocabulatorDataModel.swift */; };
+		42467E1C1E1EFCD8006398DE /* Decoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42467E1B1E1EFCD8006398DE /* Decoration.swift */; };
+		42467E1E1E1F3E5C006398DE /* WordProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42467E1D1E1F3E5C006398DE /* WordProviderTests.swift */; };
 		425606B21E1C2504003686CB /* EventDistributerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425606B11E1C2504003686CB /* EventDistributerTestCase.swift */; };
 		425606F51E1C5EC3003686CB /* WordViewerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425606F41E1C5EC3003686CB /* WordViewerCoordinator.swift */; };
 		425606F71E1C80D6003686CB /* DemoWords.json in Resources */ = {isa = PBXBuildFile; fileRef = 425606F61E1C80D6003686CB /* DemoWords.json */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		422259211E1D7F16001D3C26 /* VocabulatorModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabulatorModelTests.swift; sourceTree = "<group>"; };
 		42291FBF1E1D414600F3CBED /* VocabulatorDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabulatorDataModel.swift; sourceTree = "<group>"; };
+		42467E1B1E1EFCD8006398DE /* Decoration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoration.swift; sourceTree = "<group>"; };
+		42467E1D1E1F3E5C006398DE /* WordProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordProviderTests.swift; sourceTree = "<group>"; };
 		425606B11E1C2504003686CB /* EventDistributerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDistributerTestCase.swift; sourceTree = "<group>"; };
 		425606F41E1C5EC3003686CB /* WordViewerCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordViewerCoordinator.swift; sourceTree = "<group>"; };
 		425606F61E1C80D6003686CB /* DemoWords.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DemoWords.json; sourceTree = "<group>"; };
@@ -91,6 +95,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		42467E1A1E1EFCC8006398DE /* Decorations */ = {
+			isa = PBXGroup;
+			children = (
+				42467E1B1E1EFCD8006398DE /* Decoration.swift */,
+			);
+			name = Decorations;
+			sourceTree = "<group>";
+		};
 		425606F31E1C5D39003686CB /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +134,7 @@
 		427034371E1991A800986DCE /* Vocabulator */ = {
 			isa = PBXGroup;
 			children = (
+				42467E1A1E1EFCC8006398DE /* Decorations */,
 				42291FBE1E1D40E600F3CBED /* Model */,
 				425606F31E1C5D39003686CB /* Coordinators */,
 				4270346F1E1B1D4300986DCE /* Events */,
@@ -141,6 +154,7 @@
 				4270344D1E1991A800986DCE /* VocabulatorTests.swift */,
 				4270344F1E1991A800986DCE /* Info.plist */,
 				425606B11E1C2504003686CB /* EventDistributerTestCase.swift */,
+				42467E1D1E1F3E5C006398DE /* WordProviderTests.swift */,
 				422259211E1D7F16001D3C26 /* VocabulatorModelTests.swift */,
 			);
 			path = VocabulatorTests;
@@ -301,6 +315,7 @@
 				4270346A1E1B092800986DCE /* AppCoordinator.swift in Sources */,
 				427034671E1B026800986DCE /* HelperFunctions.swift in Sources */,
 				427034391E1991A800986DCE /* AppDelegate.swift in Sources */,
+				42467E1C1E1EFCD8006398DE /* Decoration.swift in Sources */,
 				427034731E1B36AC00986DCE /* DeckPickerEvents.swift in Sources */,
 				4270345D1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift in Sources */,
 				427034711E1B1F6B00986DCE /* EventDistributer.swift in Sources */,
@@ -316,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42467E1E1E1F3E5C006398DE /* WordProviderTests.swift in Sources */,
 				425606B21E1C2504003686CB /* EventDistributerTestCase.swift in Sources */,
 				422259221E1D7F16001D3C26 /* VocabulatorModelTests.swift in Sources */,
 				4270344E1E1991A800986DCE /* VocabulatorTests.swift in Sources */,

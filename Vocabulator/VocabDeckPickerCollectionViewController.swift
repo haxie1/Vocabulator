@@ -25,7 +25,7 @@ struct DeckCellViewModel: WordDeck {
     let title: String
     let imageName: String
     
-    init(deckID: UUID, title: String, imageName: String = "WordDeckDefault") {
+    init(deckID: UUID, title: String, imageName: String = "WordDeck") {
         self.deckID = deckID
         self.title = title
         self.imageName = imageName
@@ -36,7 +36,7 @@ class VocabDeckPickerViewModel {
     let title: String
     var sections: [DeckCollection] = []
     var bodyBackgroundColor: UIColor {
-        return .groupTableViewBackground
+        return UIColor(colorLiteralRed: (139 / 255), green: (161 / 255), blue: (217 / 255), alpha: 1.0)
     }
     
     init(withTitle title: String) {
@@ -89,6 +89,7 @@ class VocabDeckPickerCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.clearsSelectionOnViewWillAppear = true
         if self.needsDeferredReload {
             self.applyViewModel(self.deckPickerViewModel!)
         }
@@ -136,13 +137,14 @@ class VocabDeckPickerCollectionViewController: UICollectionViewController {
 //    }
 //
 //    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-//        return true
+//        return false
 //    }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let wordDeck = self.deckPickerViewModel?.wordDeck(forIndexPath: indexPath)
         DeckPickerEvents.selectDeck(id: wordDeck!.deckID)
     }
+    
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {

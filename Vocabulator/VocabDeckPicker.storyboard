@@ -14,30 +14,30 @@
         <scene sceneID="qcJ-6e-d8z">
             <objects>
                 <collectionViewController storyboardIdentifier="VocabDeckPickerCollectionViewController" id="waF-Ot-dQT" customClass="VocabDeckPickerCollectionViewController" customModule="Vocabulator" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="srV-mU-EBc">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="srV-mU-EBc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aEg-jI-4sl">
-                            <size key="itemSize" width="75" height="100"/>
+                            <size key="itemSize" width="100" height="130"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VocabDeckCollectionViewCell" id="toq-ph-pdY" customClass="VocabDeckCollectionViewCell" customModule="Vocabulator" customModuleProvider="target">
-                                <rect key="frame" x="10" y="60" width="75" height="100"/>
+                                <rect key="frame" x="10" y="60" width="100" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="75" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WordDeckDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Zc3-Gb-7EI">
-                                            <rect key="frame" x="0.0" y="-3" width="75" height="103"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WordDeck" translatesAutoresizingMaskIntoConstraints="NO" id="Zc3-Gb-7EI">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yo5-Qs-csd">
-                                            <rect key="frame" x="4" y="81.5" width="67" height="14.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <rect key="frame" x="4" y="100" width="92" height="14"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -47,21 +47,18 @@
                                     <constraint firstAttribute="trailing" secondItem="Zc3-Gb-7EI" secondAttribute="trailing" id="KZg-Zj-uBi"/>
                                     <constraint firstAttribute="bottom" secondItem="Zc3-Gb-7EI" secondAttribute="bottom" id="URm-Cu-auQ"/>
                                     <constraint firstItem="Zc3-Gb-7EI" firstAttribute="leading" secondItem="toq-ph-pdY" secondAttribute="leading" id="WHx-rv-gap"/>
-                                    <constraint firstItem="Yo5-Qs-csd" firstAttribute="bottom" secondItem="Zc3-Gb-7EI" secondAttribute="bottom" constant="-4" id="Xir-pE-fFT"/>
+                                    <constraint firstItem="Yo5-Qs-csd" firstAttribute="bottom" secondItem="Zc3-Gb-7EI" secondAttribute="bottom" constant="-16" id="Xir-pE-fFT"/>
                                     <constraint firstItem="Yo5-Qs-csd" firstAttribute="trailing" secondItem="Zc3-Gb-7EI" secondAttribute="trailing" constant="-4" id="Zb1-RJ-n7k"/>
                                     <constraint firstItem="Yo5-Qs-csd" firstAttribute="leading" secondItem="Zc3-Gb-7EI" secondAttribute="leading" constant="4" id="brg-x7-vU8"/>
-                                    <constraint firstItem="Zc3-Gb-7EI" firstAttribute="top" secondItem="toq-ph-pdY" secondAttribute="top" constant="-3" id="sis-B6-GkB"/>
+                                    <constraint firstItem="Zc3-Gb-7EI" firstAttribute="top" secondItem="toq-ph-pdY" secondAttribute="top" id="sis-B6-GkB"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="showsBorder" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="imageView" destination="Zc3-Gb-7EI" id="8q0-Bz-f3J"/>
                                     <outlet property="titleLabel" destination="Yo5-Qs-csd" id="EDs-8F-jVj"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VocabDeckCollectionHeaderView" id="o2a-y8-qT5" customClass="VocabDeckCollectionHeaderView" customModule="Vocabulator" customModuleProvider="target">
+                        <collectionReusableView key="sectionHeaderView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VocabDeckCollectionHeaderView" id="o2a-y8-qT5" customClass="VocabDeckCollectionHeaderView" customModule="Vocabulator" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
@@ -72,6 +69,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="37U-IZ-wSf" firstAttribute="centerY" secondItem="o2a-y8-qT5" secondAttribute="centerY" id="xAv-f0-LeX"/>
                                 <constraint firstAttribute="leadingMargin" secondItem="37U-IZ-wSf" secondAttribute="leading" id="y0L-DY-XWh"/>
@@ -111,6 +109,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="WordDeckDefault" width="37" height="49"/>
+        <image name="WordDeck" width="101" height="131"/>
     </resources>
 </document>

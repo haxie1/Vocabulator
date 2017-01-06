@@ -89,3 +89,25 @@ class WordViewerCoordinator: Coordinator {
         }
     }
 }
+
+struct WordProvider {
+    let deck: VocabulatorDeck
+    private var currentWordIndex: Int = 0
+
+    var currentWord: VocabulatorWord? {
+         return deck.words[currentWordIndex]
+    }
+
+    init(deck: VocabulatorDeck) {
+        self.deck = deck
+    }
+    
+    mutating func next() -> VocabulatorWord? {
+        if currentWordIndex < deck.words.count {
+            let word = deck.words[currentWordIndex]
+            currentWordIndex += 1
+            return word
+        }
+        return nil
+    }
+}
