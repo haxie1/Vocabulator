@@ -40,6 +40,9 @@ class WordViewerCoordinator: Coordinator {
     let presentingController: UINavigationController
     let managedController: UINavigationController
     let deck: VocabulatorDeck
+    lazy var wordProvider: WordProvider = {
+        return WordProvider(deck: self.deck)
+    }()
     
     init(withPresentingController controller: UINavigationController, deck: VocabulatorDeck) {
         self.presentingController = controller
@@ -55,14 +58,13 @@ class WordViewerCoordinator: Coordinator {
                 self.handleCompletion(action: action)
                 break
             case .nextWord:
-                todo("Handle nextWord action event")
+                self.nextWord()
             }
         }
         
-        let word = self.deck.words[0]
-        let wordVM = WordViewerViewModel(title: self.deck.title, wordIndex: 1, totalWordCount: self.deck.words.count, word: word.word, pronunciation: word.pronunciation, definition: word.definition)
+        self.wordProvider.reset()
         let wordViewerController = self.managedController.topViewController as! WordViewerViewController
-        wordViewerController.viewModel = wordVM
+        wordViewerController.viewModel = self.viewModel(for: self.deck)
         self.presentingController.present(self.managedController, animated: true, completion: nil)
     }
     
@@ -88,11 +90,32 @@ class WordViewerCoordinator: Coordinator {
             // no-op
         }
     }
+    
+    private func nextWord() {
+        let vm = self.viewModel(for: self.deck)
+        let controller = self.wordViewerViewController()
+        controller.viewModel = vm
+        self.managedController.pushViewController(controller, animated: true)
+    }
+    
+    private func wordViewerViewController() -> WordViewerViewController {
+        let storyBoard = UIStoryboard(name: "WordViewer", bundle: nil)
+        let wordViewerController = storyBoard.instantiateViewController(withIdentifier: String(describing: WordViewerViewController.self)) as! WordViewerViewController
+        return wordViewerController
+    }
+    
+    private func viewModel(for deck: VocabulatorDeck) -> WordViewerViewModel? {
+        if let word = self.wordProvider.next() {
+            let wordIndex = self.wordProvider.currentWordIndex
+            return WordViewerViewModel(title: deck.title, wordIndex:wordIndex , totalWordCount: deck.words.count, word: word.word, pronunciation: word.pronunciation, definition: word.definition)
+        }
+        return nil
+    }
 }
 
 class WordProvider {
     let deck: VocabulatorDeck
-    private var currentWordIndex: Int = 0
+    private(set) var currentWordIndex: Int = 0
     private var iterator: IndexingIterator<[VocabulatorWord]>
     
     var currentWord: VocabulatorWord? {

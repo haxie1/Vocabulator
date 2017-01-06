@@ -38,6 +38,9 @@ class WordViewerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.applyViewModel(viewModel: self.viewModel!) // if we don't have a viewmodel at this point, crash
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(nextWord(gesture:)))
+        self.view.addGestureRecognizer(gesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +51,10 @@ class WordViewerViewController: UIViewController {
     
     @IBAction func donePressed(_ sender: Any) {
         WordViewerEvents.cancel()
+    }
+    
+    func nextWord(gesture: UITapGestureRecognizer?) {
+        WordViewerEvents.next()
     }
     
     private func applyViewModel(viewModel: WordViewerViewModel) {

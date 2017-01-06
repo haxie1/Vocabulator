@@ -107,8 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				4270346D1E1B1D1600986DCE /* Coordinator.swift */,
-				427034691E1B092800986DCE /* AppCoordinator.swift */,
-				425606F41E1C5EC3003686CB /* WordViewerCoordinator.swift */,
 			);
 			name = Coordinators;
 			sourceTree = "<group>";
@@ -163,6 +161,7 @@
 		4270345E1E1AD1DF00986DCE /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				427034691E1B092800986DCE /* AppCoordinator.swift */,
 				4270345F1E1AEE6E00986DCE /* Deck Picker */,
 				427034601E1AEF3F00986DCE /* Word Viewer */,
 			);
@@ -183,6 +182,7 @@
 		427034601E1AEF3F00986DCE /* Word Viewer */ = {
 			isa = PBXGroup;
 			children = (
+				425606F41E1C5EC3003686CB /* WordViewerCoordinator.swift */,
 				427034611E1AEF8A00986DCE /* WordViewer.storyboard */,
 				427034631E1AF60E00986DCE /* WordViewerViewController.swift */,
 			);
