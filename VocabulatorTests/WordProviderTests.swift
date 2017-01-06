@@ -48,11 +48,8 @@ class WordProviderTests: VocabulatorModelTests {
     }
     
     func testNextReturnsNilWhenLastWordIsReached() {
-        let word = testDeck.words[0]
-        let jsonWord: [String: Any] = ["id" : word.id.uuidString, "word" : word.word, "pronunciation": word.pronunciation, "definintion": word.definition]
-        let jsonDeck: [String : Any] = ["id" : testDeck.id.uuidString, "title": testDeck.title, "words" : [jsonWord]]
-        let deck = VocabulatorDeck(withJSON: jsonDeck)!
-        var wordProvider = WordProvider(deck: deck)
+        let deck = self.singleWordDeck
+        let wordProvider = WordProvider(deck: deck)
         _ = wordProvider.next()
         
         XCTAssertNil(wordProvider.next())
@@ -71,14 +68,27 @@ class WordProviderTests: VocabulatorModelTests {
     }
     
     func testCurrentWordReturnsLastWordAfterNextIsExahusted() {
-        let word = testDeck.words[0]
-        let jsonWord: [String: Any] = ["id" : word.id.uuidString, "word" : word.word, "pronunciation": word.pronunciation, "definintion": word.definition]
-        let jsonDeck: [String : Any] = ["id" : testDeck.id.uuidString, "title": testDeck.title, "words" : [jsonWord]]
-        let deck = VocabulatorDeck(withJSON: jsonDeck)!
-        var wordProvider = WordProvider(deck: deck)
+        let deck = self.singleWordDeck
+        let wordProvider = WordProvider(deck: deck)
         let nextWord = wordProvider.next() // increment the deck index
         _ = wordProvider.next() // increments past the end index of the deck's words.
         
         XCTAssertEqual(nextWord?.id, wordProvider.currentWord?.id)
+    }
+    
+    func testValidWordReturnedAfterAReset() {
+        let deck = self.singleWordDeck
+        let provider = WordProvider(deck: deck)
+        _ = provider.next()
+        XCTAssertNil(provider.next())
+        provider.reset()
+        XCTAssertNotNil(provider.next())
+    }
+    
+    private var singleWordDeck: VocabulatorDeck {
+        let word = self.testDeck.words[0]
+        let jsonWord: [String: Any] = ["id" : word.id.uuidString, "word" : word.word, "pronunciation": word.pronunciation, "definition": word.definition]
+        let jsonDeck: [String : Any] = ["id" : testDeck.id.uuidString, "title": testDeck.title, "words" : [jsonWord]]
+        return VocabulatorDeck(withJSON: jsonDeck)!
     }
 }

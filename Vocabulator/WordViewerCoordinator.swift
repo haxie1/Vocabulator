@@ -90,28 +90,36 @@ class WordViewerCoordinator: Coordinator {
     }
 }
 
-struct WordProvider {
+class WordProvider {
     let deck: VocabulatorDeck
     private var currentWordIndex: Int = 0
-
+    private var iterator: IndexingIterator<[VocabulatorWord]>
+    
     var currentWord: VocabulatorWord? {
         guard !deck.words.isEmpty else {
             return nil
         }
         
-        return deck.words[currentWordIndex]
+        let index = (self.currentWordIndex > 0) ? self.currentWordIndex - 1 : 0
+        return deck.words[index]
     }
 
     init(deck: VocabulatorDeck) {
         self.deck = deck
+        self.iterator = self.deck.words.makeIterator()
     }
     
-    mutating func next() -> VocabulatorWord? {
-        if currentWordIndex < deck.words.count {
-            let word = deck.words[currentWordIndex]
-            currentWordIndex += 1
-            return word
+    func next() -> VocabulatorWord? {
+        guard let word = self.iterator.next() else {
+            return nil
         }
-        return nil
+        
+        self.currentWordIndex += 1
+        return word
+    }
+    
+    func reset() {
+        self.currentWordIndex = 0
+        self.iterator = self.deck.words.makeIterator()
     }
 }
