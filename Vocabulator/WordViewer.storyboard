@@ -42,7 +42,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEX-T9-M2J">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEX-T9-M2J">
                                         <rect key="frame" x="0.0" y="31.5" width="343" height="551.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -61,7 +61,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bTR-As-h5L">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Ijq-Hf-89U">
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Ijq-Hf-89U">
                             <connections>
                                 <action selector="donePressed:" destination="WpX-Zk-a0v" id="BMw-t2-tJJ"/>
                             </connections>
@@ -72,11 +72,49 @@
                         <outlet property="definitionTextView" destination="IEX-T9-M2J" id="QeI-IP-pnA"/>
                         <outlet property="doneButton" destination="Ijq-Hf-89U" id="Tzc-dO-5F7"/>
                         <outlet property="wordLabel" destination="xGx-r4-yzU" id="HEF-7f-6iK"/>
+                        <segue destination="QHP-n2-5wH" kind="push" id="8dC-Al-gyV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HN6-fP-fze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589.60000000000002" y="28.335832083958024"/>
+            <point key="canvasLocation" x="521" y="27"/>
+        </scene>
+        <!--Word Session Complete Controller-->
+        <scene sceneID="EqD-uk-ZvB">
+            <objects>
+                <viewController storyboardIdentifier="WordSessionCompleteController" id="QHP-n2-5wH" customClass="WordSessionCompleteController" customModule="Vocabulator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="s8V-du-JjM"/>
+                        <viewControllerLayoutGuide type="bottom" id="X90-u5-mra"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tzc-d5-J6U">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Done!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWj-T9-YQB">
+                                <rect key="frame" x="133.5" y="317" width="108.5" height="33.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PWj-T9-YQB" firstAttribute="centerX" secondItem="tzc-d5-J6U" secondAttribute="centerX" id="Es6-E3-KyI"/>
+                            <constraint firstItem="PWj-T9-YQB" firstAttribute="centerY" secondItem="tzc-d5-J6U" secondAttribute="centerY" id="QdC-y1-iRc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jXU-DC-sys">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="ETh-ub-paB">
+                            <connections>
+                                <action selector="handleDone:" destination="QHP-n2-5wH" id="PQi-aX-R7q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p72-27-zy7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="27"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ig2-qF-zZo">

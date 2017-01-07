@@ -10,8 +10,7 @@ import UIKit
 
 protocol Decoration {
     associatedtype Decoratable
-    
-    func decorate(_ type: Decoratable) -> () -> Void
+    @discardableResult func decorate(_ target: Decoratable) -> () -> Void
 }
 
 struct AnyDecoration<DecoratableType>: Decoration {
@@ -39,6 +38,46 @@ struct Shadow: Decoration {
             type.layer.shadowOpacity = 0.0
             type.layer.masksToBounds = false
             type.layer.shouldRasterize = true
+        }
+    }
+}
+
+struct TransparentNavBar: Decoration {
+    func decorate(_ target: UIViewController) -> () -> Void {
+        target.navigationController?.navigationBar.isTransparent = true
+        
+        return { [weak target] in
+            target?.navigationController?.navigationBar.isTransparent = false
+        }
+    }
+}
+
+struct HideBackButton: Decoration {
+    func decorate(_ target: UIViewController) -> () -> Void {
+        target.navigationItem.hidesBackButton = true
+        let undo = { [weak target] () -> Void in
+            target?.navigationItem.hidesBackButton = false
+        }
+        return undo
+    }
+}
+
+extension UINavigationBar {
+    var isTransparent: Bool {
+        set (newValue) {
+            if newValue {
+                self.setBackgroundImage(UIImage(), for: .default)
+                self.shadowImage = UIImage()
+                self.isTranslucent = true
+            } else {
+                self.setBackgroundImage(nil, for: .default)
+                self.shadowImage = nil
+                self.isTranslucent = false
+            }
+        }
+        
+        get {
+            return self.isTranslucent
         }
     }
 }

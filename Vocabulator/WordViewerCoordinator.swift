@@ -39,6 +39,10 @@ class WordViewerCoordinator: Coordinator {
     
     let presentingController: UINavigationController
     let managedController: UINavigationController
+    var wordViewerController: WordViewerViewController {
+        return self.managedController.topViewController as! WordViewerViewController
+    }
+    
     let deck: VocabulatorDeck
     lazy var wordProvider: WordProvider = {
         return WordProvider(deck: self.deck)
@@ -63,9 +67,9 @@ class WordViewerCoordinator: Coordinator {
         }
         
         self.wordProvider.reset()
-        let wordViewerController = self.managedController.topViewController as! WordViewerViewController
-        wordViewerController.viewModel = self.viewModel(for: self.deck)
+        self.nextWord()
         self.presentingController.present(self.managedController, animated: true, completion: nil)
+        _ = TransparentNavBar().decorate(self.managedController.topViewController!)
     }
     
     func end() {
@@ -74,7 +78,6 @@ class WordViewerCoordinator: Coordinator {
         }
         
         self.presentingController.dismiss(animated: true) { [weak self] in
-            
             self?.parent?.childDidEnd()
         }
     }
@@ -92,16 +95,18 @@ class WordViewerCoordinator: Coordinator {
     }
     
     private func nextWord() {
-        let vm = self.viewModel(for: self.deck)
-        let controller = self.wordViewerViewController()
-        controller.viewModel = vm
-        self.managedController.pushViewController(controller, animated: true)
-    }
-    
-    private func wordViewerViewController() -> WordViewerViewController {
-        let storyBoard = UIStoryboard(name: "WordViewer", bundle: nil)
-        let wordViewerController = storyBoard.instantiateViewController(withIdentifier: String(describing: WordViewerViewController.self)) as! WordViewerViewController
-        return wordViewerController
+        if let vm = self.viewModel(for: self.deck) {
+            let controller = self.managedController.topViewController as! WordViewerViewController
+            controller.viewModel = vm
+            return
+        }
+        // are we done at this point and need to show the success screen?
+        todo("Show a completion screen when we have exhaused all the words")
+        let storyboard = UIStoryboard(name: "WordViewer", bundle: nil)
+        let doneController = storyboard.instantiateViewController(withIdentifier: String(describing: WordSessionCompleteController.self))
+        
+        self.managedController.pushViewController(doneController, animated: true)
+        _ = HideBackButton().decorate(doneController)
     }
     
     private func viewModel(for deck: VocabulatorDeck) -> WordViewerViewModel? {

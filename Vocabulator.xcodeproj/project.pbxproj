@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		422225531E20675E00590F95 /* WordSessionCompleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422225521E20675E00590F95 /* WordSessionCompleteController.swift */; };
 		422259221E1D7F16001D3C26 /* VocabulatorModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422259211E1D7F16001D3C26 /* VocabulatorModelTests.swift */; };
 		42291FC01E1D414600F3CBED /* VocabulatorDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42291FBF1E1D414600F3CBED /* VocabulatorDataModel.swift */; };
 		42467E1C1E1EFCD8006398DE /* Decoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42467E1B1E1EFCD8006398DE /* Decoration.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		422225521E20675E00590F95 /* WordSessionCompleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSessionCompleteController.swift; sourceTree = "<group>"; };
 		422259211E1D7F16001D3C26 /* VocabulatorModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabulatorModelTests.swift; sourceTree = "<group>"; };
 		42291FBF1E1D414600F3CBED /* VocabulatorDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabulatorDataModel.swift; sourceTree = "<group>"; };
 		42467E1B1E1EFCD8006398DE /* Decoration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoration.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				425606F41E1C5EC3003686CB /* WordViewerCoordinator.swift */,
 				427034611E1AEF8A00986DCE /* WordViewer.storyboard */,
 				427034631E1AF60E00986DCE /* WordViewerViewController.swift */,
+				422225521E20675E00590F95 /* WordSessionCompleteController.swift */,
 			);
 			name = "Word Viewer";
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				4270345D1E19963D00986DCE /* VocabDeckCellCollectionViewCell.swift in Sources */,
 				427034711E1B1F6B00986DCE /* EventDistributer.swift in Sources */,
 				42291FC01E1D414600F3CBED /* VocabulatorDataModel.swift in Sources */,
+				422225531E20675E00590F95 /* WordSessionCompleteController.swift in Sources */,
 				427034641E1AF60E00986DCE /* WordViewerViewController.swift in Sources */,
 				4270345B1E1994A900986DCE /* VocabDeckPickerCollectionViewController.swift in Sources */,
 				425606F51E1C5EC3003686CB /* WordViewerCoordinator.swift in Sources */,
