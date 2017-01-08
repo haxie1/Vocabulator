@@ -33,7 +33,9 @@ class VocabDeckCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        _ = Shadow().decorate(self)
     }
+    
     override var isHighlighted: Bool {
         set (newValue) {
             super.isHighlighted = newValue
@@ -51,22 +53,3 @@ class VocabDeckCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension VocabDeckCollectionViewCell {
-    @IBInspectable var showsBorder: Bool {
-        set (newValue) {
-            if newValue {
-                self.layer.borderColor = UIColor.gray.cgColor
-                self.layer.borderWidth = 0.5
-                self.layer.cornerRadius = 4.0
-                self.clipsToBounds = true
-            } else {
-                self.layer.borderColor = UIColor.clear.cgColor
-                self.layer.borderWidth = 0.0
-            }
-        }
-        
-        get {
-            return self.layer.borderWidth > 0.0 && self.layer.borderColor != UIColor.clear.cgColor
-        }
-    }
-}

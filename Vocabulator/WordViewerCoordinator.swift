@@ -106,7 +106,7 @@ class WordViewerCoordinator: Coordinator {
         let doneController = storyboard.instantiateViewController(withIdentifier: String(describing: WordSessionCompleteController.self))
         
         self.managedController.pushViewController(doneController, animated: true)
-        _ = HideBackButton().decorate(doneController)
+        _ = HiddenBackButton().decorate(doneController)
     }
     
     private func viewModel(for deck: VocabulatorDeck) -> WordViewerViewModel? {

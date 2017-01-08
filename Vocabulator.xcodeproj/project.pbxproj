@@ -10,6 +10,7 @@
 		422225531E20675E00590F95 /* WordSessionCompleteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422225521E20675E00590F95 /* WordSessionCompleteController.swift */; };
 		422259221E1D7F16001D3C26 /* VocabulatorModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422259211E1D7F16001D3C26 /* VocabulatorModelTests.swift */; };
 		42291FC01E1D414600F3CBED /* VocabulatorDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42291FBF1E1D414600F3CBED /* VocabulatorDataModel.swift */; };
+		422B489B1E21B14700DD2DEB /* ConcreteDecorations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422B489A1E21B14700DD2DEB /* ConcreteDecorations.swift */; };
 		42467E1C1E1EFCD8006398DE /* Decoration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42467E1B1E1EFCD8006398DE /* Decoration.swift */; };
 		42467E1E1E1F3E5C006398DE /* WordProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42467E1D1E1F3E5C006398DE /* WordProviderTests.swift */; };
 		425606B21E1C2504003686CB /* EventDistributerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425606B11E1C2504003686CB /* EventDistributerTestCase.swift */; };
@@ -45,6 +46,7 @@
 		422225521E20675E00590F95 /* WordSessionCompleteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSessionCompleteController.swift; sourceTree = "<group>"; };
 		422259211E1D7F16001D3C26 /* VocabulatorModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabulatorModelTests.swift; sourceTree = "<group>"; };
 		42291FBF1E1D414600F3CBED /* VocabulatorDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocabulatorDataModel.swift; sourceTree = "<group>"; };
+		422B489A1E21B14700DD2DEB /* ConcreteDecorations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteDecorations.swift; sourceTree = "<group>"; };
 		42467E1B1E1EFCD8006398DE /* Decoration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoration.swift; sourceTree = "<group>"; };
 		42467E1D1E1F3E5C006398DE /* WordProviderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordProviderTests.swift; sourceTree = "<group>"; };
 		425606B11E1C2504003686CB /* EventDistributerTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDistributerTestCase.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				42467E1B1E1EFCD8006398DE /* Decoration.swift */,
+				422B489A1E21B14700DD2DEB /* ConcreteDecorations.swift */,
 			);
 			name = Decorations;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			files = (
 				4270346A1E1B092800986DCE /* AppCoordinator.swift in Sources */,
 				427034671E1B026800986DCE /* HelperFunctions.swift in Sources */,
+				422B489B1E21B14700DD2DEB /* ConcreteDecorations.swift in Sources */,
 				427034391E1991A800986DCE /* AppDelegate.swift in Sources */,
 				42467E1C1E1EFCD8006398DE /* Decoration.swift in Sources */,
 				427034731E1B36AC00986DCE /* DeckPickerEvents.swift in Sources */,
